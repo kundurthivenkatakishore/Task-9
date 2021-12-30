@@ -1,0 +1,77 @@
+1)Solving problems using array functions on rest countries data.
+
+a)Get all the countries from Asia continent /region using Filter function
+
+code:
+      var request=new XMLHttpRequest();
+      request.open("GET","https://restcountries.com/v2/all",true)
+      request.onload=function(){
+        var data=JSON.parse(this.response);
+        let output=data.filter((count)=>{
+            if(count.region=="Asia"){
+                return count.name;
+            }
+        });
+        console.log(output);
+
+      }
+      request.send();
+      
+output:
+      [Afganisthan,Armenia,Azerbaijan,Bahrain,Bangladesh,Bhutan,Brunei Darussala,Cambodia,China,Georgia,Hong Kong,India,Indonesia,Iran,Iraq,Israel,Japan,Jordan,Kazakhstan
+      Kuwait,Kyrgyzstan,Lao People,Lebanon,Macao,Malaysia,Maldives,Mongolia,Myanmar,Nepal,Korea,Oman,Pakistan,Palestine,Philippines,Qatar,Saudi Arabia,Singapore,Korea
+      Sri Lanka,Syrian Arab Republic,Taiwan,Tajikistan,Thailand,Timor-Leste,Turkey,Turkmenistan,United Arab Emirates,Uzbekistan,Vietnam,Yemen]
+
+b)Get all the countries with a population of less than 2 lakhs using Filter function
+
+code:
+      var request=new XMLHttpRequest();
+      request.open("GET","https://restcountries.com/v2/all",true)
+      request.onload=function(){
+        var data=JSON.parse(this.response);
+        let output=data.filter((count)=>{
+            if(count.population>=200000){
+                return count.name;
+            }
+        });
+        console.log(output);
+
+      }
+      request.send();
+      
+c)Print the following details name, capital, flag using forEach function
+
+code:
+      var request=new XMLHttpRequest();
+      request.open("GET","https://restcountries.com/v2/all",true)
+      request.onload=function(){
+
+      var data=JSON.parse(this.response);
+        //printing name,capital and country flag
+        let countryname=data.map((con)=>con.name);
+        console.log(countryname);
+        let countrycapital=data.map((coun)=>coun.capital)
+        console.log(countrycapital);
+        let countryflag=data.map((count)=>count.flags)
+        console.log(countryflag);
+        
+      request.send();
+d)Print the total population of countries using reduce function
+
+code:
+      var request=new XMLHttpRequest();
+      request.open("GET","https://restcountries.com/v2/all",true)
+      request.onload=function(){
+          var data=JSON.parse(this.response);
+          let obj=data.reduce((acc,cur)=>acc+cur.population,0)
+          console.log(obj);
+      request.send();
+      
+output:
+        7758589152
+ 
+ e)Print the country which uses US Dollars as currency
+ 
+ code:
+      
+    
