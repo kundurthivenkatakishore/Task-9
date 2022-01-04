@@ -30,7 +30,7 @@ code:
       request.onload=function(){
         var data=JSON.parse(this.response);
         let output=data.filter((count)=>{
-            if(count.population>=200000){
+            if(count.population<=200000){
                 return count.name;
             }
         });
@@ -73,5 +73,15 @@ output:
  e)Print the country which uses US Dollars as currency
  
  code:
+         let output=data.filter((count)=>{
+            for(let curr in count.currencies){
+                if(count.currencies[curr].code==="USD")
+                {
+                    return count;
+                }
+            }   
+         });
+         console.log(output);
+        
       
     
